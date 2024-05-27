@@ -3,6 +3,7 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: "/notes/",
+  head: [['link', { rel: 'icon', href: '/notes/favicon-32x32.png' }]],
   title: "Rico's notes",
   description: "",
   themeConfig: {
