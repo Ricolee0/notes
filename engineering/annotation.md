@@ -22,4 +22,4 @@
 
 如果使用 vscode 进行开发， 配合 `TODO Highlight` 插件是一个不错的选择，他会对不同的注释词进行不同颜色的高亮，并且是可配置的。
 
-![TODO Highlight](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0830ec90e1514ca2bfb4d3985818b75f~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1268\&h=772\&s=219265\&e=png\&b=f8f8f8)
+![1716894924123.png](https://neptune-ipc.oss-cn-shenzhen.aliyuncs.com/utools/1716894924123.png)
