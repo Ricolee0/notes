@@ -1,17 +1,21 @@
 import { defineConfig } from 'vitepress'
+import { genSide } from './utils.mjs'
 
-// https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: "/notes/",
   head: [['link', { rel: 'icon', href: '/notes/favicon-32x32.png' }]],
   title: "Rico's notes",
   description: "",
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
     nav: nav(),
-
     sidebar: {
-      '/books/': { base: '/books/', items: sidebarBooks() }
+      '/books/': { base: '/books/', items: await sidebarBooks() },
+      '/engineering/': { base: '/engineering/', items: await sidebarEngineering() },
+      '/interview/': { base: '/interview/', items: await sidebarInterview() },
+      '/others/': { base: '/others/', items: await sidebarOthers() },
+    },
+    search: {
+      provider: "local"
     }
   }
 })
@@ -23,26 +27,61 @@ function nav() {
       link: '/books/elephant_uml',
       activeMatch: '/books/'
     },
-    // {
-    //   text: '参考',
-    //   link: '/zh/reference/site-config',
-    //   activeMatch: '/zh/reference/'
-    // }
+    {
+      text: '前端工程',
+      link: '/engineering/node_version',
+      activeMatch: '/engineering/'
+    },
+    {
+      text: '面试八股文',
+      link: '/interview/cache',
+      activeMatch: '/interview/'
+    },
+    {
+      text: '其他',
+      link: '/others/abbreviation',
+      activeMatch: '/others/'
+    },
   ]
 }
 
 
-function sidebarBooks() {
+async function sidebarBooks() {
   return [
     {
       text: '软件&架构设计',
       collapsed: false,
-      items: [
-        { text: '大象：Thinking in UML', link: 'elephant_uml' },
-        { text: 'ThoughtWorks 现代企业架构白皮书', link: 'thoughtWorks' }
-      ]
+      items: await genSide('../books')
     }
   ]
 }
 
-// thoughtWorks
+async function sidebarEngineering() {
+  return [
+    {
+      text: '解决方案',
+      collapsed: false,
+      items: await genSide('../engineering')
+    }
+  ]
+}
+
+async function sidebarInterview() {
+  return [
+    {
+      text: '解决方案',
+      collapsed: false,
+      items: await genSide('../interview')
+    }
+  ]
+}
+
+async function sidebarOthers() {
+  return [
+    {
+      text: '其他',
+      collapsed: false,
+      items: await genSide('../others')
+    }
+  ]
+}
